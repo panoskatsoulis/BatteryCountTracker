@@ -33,3 +33,10 @@ function startCharging() {
     set +e
     return 0
 }
+
+function waitForBatteryConnect() {
+    while ! [ -d /sys/class/power_supply/BAT0 ]; do
+	prettyEcho "Battery unconnected. Sleeping for 2 mins."
+	sleep 120
+    done
+}

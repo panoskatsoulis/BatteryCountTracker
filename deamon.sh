@@ -7,6 +7,7 @@ prettyEcho "Battery cycle count tracking started."
 while true; do
     prettyEcho "Sleeping 30 sec"
     sleep 30
+    waitForBatteryConnect
     status=`get_status`
     prettyEcho "Status is $status"
     [ $status != "Charging" ] && continue
